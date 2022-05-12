@@ -10,7 +10,7 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 
 #Press Control-D
 
-■Path 変更(ec2-user)
+■ Path 変更(ec2-user)
 $ echo 'eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"' >> /home/ec2-user/.bash_profile
 $ eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"
 $ sudo yum groupinstall 'Development Tools'
