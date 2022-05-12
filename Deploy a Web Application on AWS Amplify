@@ -1,6 +1,6 @@
-#Home Vrew 設置
+■ Homebrew 設置
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ==> Checking for `sudo` access (which may request your password)...
 ==> Select a Homebrew installation directory:
 - Enter your password to install to /home/linuxbrew/.linuxbrew (recommended)
@@ -9,7 +9,55 @@
 
 #Press Control-D
 
-#Path 変更(ec2-user)
-echo 'eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"' >> /home/ec2-user/.bash_profile
-eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"
-sudo yum groupinstall 'Development Tools'
+■Path 変更(ec2-user)
+$ echo 'eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"' >> /home/ec2-user/.bash_profile
+$ eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"
+$ sudo yum groupinstall 'Development Tools'
+
+■ Homebrew アップデート
+$ brew update
+
+■ Nvm 設置
+$ brew install nvm
+
+#エラーが出ているため、環境変数変更後、reinstall
+
+$ vim  /home/ec2-user/.bash_profile
+------
+#下に追記
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/ec2-user/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/ec2-user/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/ec2-user/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/ec2-user/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+------
+
+$ brew reinstall nvm
+
+$ nvm -v
+0.39.1
+
+■ node js 設置
+$ nvm ls-remote
+        v0.1.14
+        v0.1.15
+        v0.1.16
+        ...
+       v16.13.0   (LTS: Gallium)
+       v16.14.1   (LTS: Gallium)
+       v16.14.2   (LTS: Gallium)
+       v16.15.0   (Latest LTS: Gallium)
+        v17.0.0
+        v17.0.1
+        v17.1.0
+        v17.2.0
+     ...
+     
+$ nvm install 16.15.0     
+
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v16.15.0 (npm v8.5.5)
+Creating default alias: default -> 16.15.0 (-> v16.15.0)
+
+■ Amplify CLI 設置
+https://aws.amazon.com/amplify/
+$ npm install -g @aws-amplify/cli
