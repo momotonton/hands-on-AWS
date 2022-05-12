@@ -1,0 +1,15 @@
+#Home Vrew 設置
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+==> Checking for `sudo` access (which may request your password)...
+==> Select a Homebrew installation directory:
+- Enter your password to install to /home/linuxbrew/.linuxbrew (recommended)
+- Press Control-D to install to /home/ec2-user/.linuxbrew
+- Press Control-C to cancel installation
+
+#Press Control-D
+
+#Path 変更(ec2-user)
+echo 'eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"' >> /home/ec2-user/.bash_profile
+eval "$(/home/ec2-user/.linuxbrew/bin/brew shellenv)"
+sudo yum groupinstall 'Development Tools'
